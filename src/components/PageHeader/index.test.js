@@ -15,7 +15,7 @@ const routerData = {
     name: '收货订单',
   },
 };
-describe('test getBreadcrumb', () => {
+describe('Test getBreadcrumb', () => {
   it('Simple url', () => {
     expect(getBreadcrumb(routerData, '/dashboard/analysis').name).toEqual('分析页');
   });

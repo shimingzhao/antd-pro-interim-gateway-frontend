@@ -17,7 +17,8 @@ export default [
     Routes: ['src/pages/Authorized'],
     authority: ['admin', 'user'],
     routes: [
-      { path: '/', redirect: '/dashboard/analysis' },
+      // { path: '/', redirect: '/dashboard/analysis' },
+      { path: '/', redirect: '/list/orders' },
       // // dashboard
       // {
       //   path: '/dashboard',
@@ -87,27 +88,19 @@ export default [
       //     },
       //   ],
       // },
-      // list
+
+
+      // test
       {
-        path: '/list',
+        path: '/test',
         icon: 'table',
-        name: 'list',
+        name: 'test',
         routes: [
           {
-            path: '/list/orders',
-            name: 'orders',
-            component: './List/OrdersList',
-          },
-          {
-            path: '/list/points',
-            name: 'points',
-            component: './List/OrdersList',
-          },
-          {
-            path: '/list/repairs',
-            name: 'repairs',
-            component: './List/OrdersList',
-          },
+            path: '/test/mytest',
+            name: 'MyTest',
+            component: './Test/MyTest',
+          }
           // {
           //   path: '/list/search',
           //   name: 'searchlist',
@@ -136,6 +129,8 @@ export default [
           // },
         ],
       },
+
+
       // // profile
       // {
       //   path: '/profile',

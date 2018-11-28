@@ -22,6 +22,8 @@ export default {
   'menu.list.orders': 'Orders',
   'menu.list.points': 'Points',
   'menu.list.repairs': 'Repairs',
+  'menu.test': 'Test',
+  'menu.test.mytest': 'MyTest',
   'menu.profile': 'Profile',
   'menu.profile.basic': 'Basic Profile',
   'menu.profile.advanced': 'Advanced Profile',

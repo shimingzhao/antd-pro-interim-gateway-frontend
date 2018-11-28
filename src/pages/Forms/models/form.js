@@ -8,7 +8,7 @@ export default {
   state: {
     step: {
       payAccount: 'ant-design@alipay.com',
-      receiverAccount: 'test@example.com',
+      receiverAccount: 'Test@example.com',
       receiverName: 'Alex',
       amount: '500',
     },

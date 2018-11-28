@@ -5,7 +5,7 @@ const { kill } = require('cross-port-killer');
 const env = Object.create(process.env);
 env.BROWSER = 'none';
 env.TEST = true;
-// flag to prevent multiple test
+// flag to prevent multiple Test
 let once = false;
 
 const startServer = spawn(/^win/.test(process.platform) ? 'npm.cmd' : 'npm', ['start'], {
