@@ -1,6 +1,6 @@
 import { urlToList } from './pathTools';
 
-describe('Test urlToList', () => {
+describe('test urlToList', () => {
   it('A path', () => {
     expect(urlToList('/userinfo')).toEqual(['/userinfo']);
   });

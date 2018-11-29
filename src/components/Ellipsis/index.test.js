@@ -1,6 +1,6 @@
 import { getStrFullLength, cutStrByFullLength } from './index';
 
-describe('Test calculateShowLength', () => {
+describe('test calculateShowLength', () => {
   it('get full length', () => {
     expect(getStrFullLength('一二，a,')).toEqual(8);
   });

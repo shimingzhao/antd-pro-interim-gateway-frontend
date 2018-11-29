@@ -3,7 +3,7 @@ import { checkPermissions } from './CheckPermissions';
 const target = 'ok';
 const error = 'error';
 
-describe('Test CheckPermissions', () => {
+describe('test CheckPermissions', () => {
   it('Correct string permission authentication', () => {
     expect(checkPermissions('user', 'user', target, error)).toEqual('ok');
   });
