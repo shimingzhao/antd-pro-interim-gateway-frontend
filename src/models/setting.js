@@ -11,7 +11,7 @@ const updateTheme = primaryColor => {
   if (!primaryColor) {
     return;
   }
-  const hideMessage = message.loading('正在编译主题！', 0);
+  const hideMessage = message.loading('Loading new theme！', 0);
   function buildIt() {
     if (!window.less) {
       return;

@@ -1,4 +1,4 @@
-import { queryRule, removeRule, addRule, updateRule } from '@/services/api';
+import { queryRule, queryRule2, queryOrdersList, removeRule, addRule, updateRule } from '@/services/api';
 
 export default {
   namespace: 'rule',
@@ -11,8 +11,16 @@ export default {
   },
 
   effects: {
+    // *fetch({ payload }, { call, put }) {
+    //   const response = yield call(queryRule, payload);
+    //   yield put({
+    //     type: 'save',
+    //     payload: response,
+    //   });
+    // },
     *fetch({ payload }, { call, put }) {
-      const response = yield call(queryRule, payload);
+      console.log('call queryRule2 inside pages/list/models')
+      const response = yield call(queryRule2, payload);
       yield put({
         type: 'save',
         payload: response,
