@@ -119,8 +119,8 @@ export default function request (url, option) {
       sessionStorage.removeItem(`${hashcode}:timestamp`);
     }
   }
-  // return fetch('https://api.myjson.com/bins/17ksqa', newOptions)
-  return axios('https://api.myjson.com/bins/17ksqa', newOptions)
+  return fetch('https://api.myjson.com/bins/17ksqa', newOptions)
+  // return axios('https://api.myjson.com/bins/17ksqa', newOptions)
     .then(() => {
       return checkStatus;
     })
