@@ -3,24 +3,23 @@ import { notification } from 'antd';
 import router from 'umi/router';
 import hash from 'hash.js';
 import { isAntdPro } from './utils';
-import axios from 'axios';
 
 const codeMessage = {
-  200: 'Standard response for successful HTTP requests.',
-  201: 'The request has been fulfilled, resulting in the creation of a new resource.',
-  202: 'The request has been accepted for processing, but the processing has not been completed. ',
-  204: 'The server successfully processed the request and is not returning any content.',
-  400: 'The server cannot or will not process the request due to an apparent client error.',
-  401: 'authentication is required and has failed or has not yet been provided. ',
-  403: 'The request was valid, but the server is refusing action. ',
-  404: 'The requested resource could not be found but may be available in the future.',
-  406: 'The requested resource is capable of generating only content not acceptable according to the Accept headers sent in the request.',
-  410: 'Indicates that the resource requested is no longer available and will not be available again. ',
-  422: 'The request was well-formed but was unable to be followed due to semantic errors.',
-  500: 'Internal Server Error',
-  502: 'Bad Gateway',
-  503: 'Service Unavailable',
-  504: 'Gateway Timeout',
+  200: '服务器成功返回请求的数据。',
+  201: '新建或修改数据成功。',
+  202: '一个请求已经进入后台排队（异步任务）。',
+  204: '删除数据成功。',
+  400: '发出的请求有错误，服务器没有进行新建或修改数据的操作。',
+  401: '用户没有权限（令牌、用户名、密码错误）。',
+  403: '用户得到授权，但是访问是被禁止的。',
+  404: '发出的请求针对的是不存在的记录，服务器没有进行操作。',
+  406: '请求的格式不可得。',
+  410: '请求的资源被永久删除，且不会再得到的。',
+  422: '当创建一个对象时，发生一个验证错误。',
+  500: '服务器发生错误，请检查服务器。',
+  502: '网关错误。',
+  503: '服务不可用，服务器暂时过载或维护。',
+  504: '网关超时。',
 };
 
 const checkStatus = response => {
@@ -29,7 +28,7 @@ const checkStatus = response => {
   }
   const errortext = codeMessage[response.status] || response.statusText;
   notification.error({
-    message: `Request error ${response.status}: ${response.url}`,
+    message: `请求错误 ${response.status}: ${response.url}`,
     description: errortext,
   });
   const error = new Error(errortext);
@@ -61,10 +60,10 @@ const cachedSave = (response, hashcode) => {
  * Requests a URL, returning a promise.
  *
  * @param  {string} url       The URL we want to request
- * @param  {object} [option]  The options we want to pass to "fetch"
+ * @param  {object} [option] The options we want to pass to "fetch"
  * @return {object}           An object containing either "data" or "err"
  */
-export default function request (url, option) {
+export default function request(url, option) {
   const options = {
     expirys: isAntdPro(),
     ...option,
@@ -119,14 +118,9 @@ export default function request (url, option) {
       sessionStorage.removeItem(`${hashcode}:timestamp`);
     }
   }
-  // return fetch('https://api.myjson.com/bins/17ksqa', newOptions)
-  return axios('https://api.myjson.com/bins/17ksqa', newOptions)
-    .then(() => {
-      return checkStatus;
-    })
-    .then(response => {
-      cachedSave(response, hashcode);
-    })
+  return fetch(url, newOptions)
+    .then(checkStatus)
+    .then(response => cachedSave(response, hashcode))
     .then(response => {
       // DELETE and 204 do not return data by default
       // using .json will report an error.
@@ -158,12 +152,4 @@ export default function request (url, option) {
         router.push('/exception/404');
       }
     });
-
-  // return axios('https://api.myjson.com/bins/17ksqa')
-  //   .then( (response) => {
-  //     console.log(response);
-  //   })
-  //   .catch( (error) =>{
-  //     console.log(error);
-  //   });
 }

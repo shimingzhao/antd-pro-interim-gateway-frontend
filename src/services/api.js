@@ -13,11 +13,6 @@ export async function queryRule(params) {
   return request(`/api/rule?${stringify(params)}`);
 }
 
-export async function queryRule2() {
-  console.log('call queryRule2')
-  return request(`https://api.myjson.com/bins/17ksqa`);
-}
-
 export async function removeRule(params) {
   return request('/api/rule', {
     method: 'POST',
@@ -73,11 +68,6 @@ export async function queryAdvancedProfile() {
 
 export async function queryFakeList(params) {
   return request(`/api/fake_list?${stringify(params)}`);
-}
-
-export async function queryOrdersList() {
-  console.log('call queryOrdersList')
-  return request(`https://api.myjson.com/bins/17ksqa`);
 }
 
 export async function removeFakeList(params) {

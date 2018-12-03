@@ -17,7 +17,7 @@ export default [
     Routes: ['src/pages/Authorized'],
     authority: ['admin', 'user'],
     routes: [
-      { path: '/', redirect: '/list/orders' },
+      { path: '/', redirect: '/dashboard/analysis' },
       // // dashboard
       // {
       //   path: '/dashboard',
@@ -134,19 +134,6 @@ export default [
           //     },
           //   ],
           // },
-        ],
-      },
-      // test
-      {
-        path: '/test',
-        icon: 'table',
-        name: 'test',
-        routes: [
-          {
-            path: '/test/mytest',
-            name: 'mytest',
-            component: './Test/MyTest',
-          },
         ],
       },
       // // profile
